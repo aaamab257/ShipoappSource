@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Activities.ProfileActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:text="@string/profile"
+            android:textColor="@color/colorwhite" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/containerdetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/colorPrimary"
+        android:gravity="end"
+        android:layoutDirection="rtl"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_user"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/newlogo" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:id="@+id/rate"
+                android:layoutDirection="rtl"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/user_name"
+                    android:layout_height="wrap_content"
+                    android:text="أحمد اشرف عبد الرحيم"
+                    android:textColor="@color/colorwhite" />
+
+                <TextView
+                    android:id="@+id/user_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cairo_regular"
+                    android:text="Email"
+                    android:visibility="gone"
+                    android:textColor="@color/colorwhite" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/containerdetails"
+        app:cardBackgroundColor="#F8E4E4"
+        app:cardCornerRadius="16sp"
+        app:cardElevation="11dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:id="@+id/user_phone"
+                android:text="رقم الهاتف : 01091593341"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:id="@+id/user_area"
+                android:text="المدينة : القاهرة"
+                android:textColor="@color/colorPrimary" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

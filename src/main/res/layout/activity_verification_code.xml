@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".ui.Activities.EnterPhone">
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+
+        android:src="@drawable/newlogo" />
+
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:padding="20dp">
+
+
+        <EditText
+            android:id="@+id/editTextCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:digits="0123456789"
+            android:backgroundTint="@color/colorAccent"
+            android:drawablePadding="10dp"
+            android:textColor="@color/colorAccent"
+            android:hint="ادخل الكود المرسل"
+            android:inputType="phone"
+            android:layoutDirection="rtl"
+            android:gravity="right"
+            android:textColorHint="@color/colorAccent"
+            android:maxLength="11" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_code"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/editTextCode"
+            app:cardBackgroundColor="@color/colorAccent"
+            app:cardCornerRadius="16sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="تأكيد"
+                android:textColor="#000" />
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_resend"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/btn_code"
+            app:cardBackgroundColor="@color/colorAccent"
+            app:cardCornerRadius="16sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="اعادة ارسال الكود"
+                android:textColor="#000" />
+        </androidx.cardview.widget.CardView>
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+</RelativeLayout>

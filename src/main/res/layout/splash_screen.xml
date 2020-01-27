@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#670C02"
+    tools:context=".ui.Activities.SplashScreen">
+
+    <ImageView
+        android:id="@+id/image_background"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/newlogo"
+        android:layout_centerInParent="true"
+        android:transitionName="example_transition" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_background"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:id="@+id/appname"
+        android:layoutDirection="rtl"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EG"
+            android:id="@+id/txt_EG"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/colorAccent"
+            android:textSize="60sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shipo"
+            android:id="@+id/txt_shipo"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/colorwhite"
+            android:textSize="60sp" />
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/year"
+        android:textSize="12sp"
+        android:textColor="@color/colorwhite"
+        android:text="© Copyrights for Middle East Co."
+        android:gravity="center"
+        android:id="@+id/copy_txt"
+        />
+    <TextView
+        android:id="@+id/year"
+        android:layout_width="match_parent"
+        android:text="2020"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="@color/colorwhite"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content" />
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appname"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:indeterminateTint="@color/colorwhite"
+        android:id="@+id/progBar"
+        />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:id="@+id/cardlin"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:cardBackgroundColor="@color/colorwhite"
+        android:layout_below="@id/appname"
+        />
+</RelativeLayout>

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardBackgroundColor="@color/colorPrimary"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_rr"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@color/colorAccent"
+            app:cardCornerRadius="16sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="تقيم المندوب "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="#000" />
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/rating"
+            android:layout_below="@id/close_dialog"
+            android:layout_above="@id/conbtn"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:visibility="visible"
+                android:src="@drawable/newlogo"
+                android:layout_marginTop="3dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="اسم المندوب"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="16sp"
+                android:id="@+id/txt_mandobName"
+                android:textColor="@color/colorwhite" />
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:numStars="5"
+                android:rating="3"
+                android:id="@+id/txt_mandob_Rate"
+                android:stepSize="1"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                />
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:numStars="5"
+                android:visibility="gone"
+                android:clickable="true"
+                android:rating="3"
+                android:id="@+id/rate_mandob"
+                android:stepSize="1"
+                />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/rate_btn"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="16sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="تقيم"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#000" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close"
+            android:layout_margin="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/close_dialog"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/detailsOrdermandob"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:text="رقم الهاتف"
+                android:textColor="@color/colorwhite"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:id="@+id/mandobphone"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="30dp"
+            android:id="@+id/tabelorderdetails"
+            android:layout_marginEnd="20dp"
+            android:layoutDirection="rtl">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="بيانات الشحنة"
+                android:textColor="@color/colorwhite"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:text="اسم الشحنة"
+                android:textColor="@color/colorwhite"
+                android:textSize="16sp"
+                android:id="@+id/mandobname"
+                android:gravity="center"
+                android:layout_gravity="center"
+                />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="سعر الشحنة :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/colorwhite"
+                     />
+
+                <TextView
+                    android:id="@+id/txt_oprice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="تيشيرت"
+                    android:textColor="@color/colorwhite" />
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="تفاصيل الشحنة : "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/colorwhite"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_odetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="تيشيرت"
+                    android:textColor="@color/colorwhite" />
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="بيانات المندوب "
+            android:textColor="@color/colorwhite"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:id="@+id/detailsOrdermandob"
+            android:layout_gravity="center"
+            />
+
+        <LinearLayout
+            android:id="@+id/conbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layoutDirection="rtl"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center|bottom"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_order_done"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="16sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="تم الاستلام"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="20sp"
+                    android:textColor="#000" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_mandobDone"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="16sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="تأكيد المندوب "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#000" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mandobPhone"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="16sp">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="التواصل مع المندوب"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#000" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

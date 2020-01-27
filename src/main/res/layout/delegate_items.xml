@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+    android:layout_margin="3dp"
+    android:background="@color/colorwhite"
+    >
+    <TextView
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="اسم المندوب :"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_gravity="start"
+        android:layout_marginStart="5dp"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginRight="5dp"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="اسم المندوب"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="8dp"
+            android:id="@+id/txt_delegaename"
+            />
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="3"
+            android:id="@+id/txt_mandob_Rate"
+            android:stepSize="1"
+            android:layout_margin="8dp"
+            android:layout_alignParentLeft="true"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

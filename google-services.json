@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1009896022846",
+    "firebase_url": "https://shipo-264416.firebaseio.com",
+    "project_id": "shipo-264416",
+    "storage_bucket": "shipo-264416.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009896022846:android:077d38c25feb9280fd426f",
+        "android_client_info": {
+          "package_name": "com.middle.east.shipo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1009896022846-i5si4tu6vnhi4kftm0t5fafigo2do6ja.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.middle.east.shipo",
+            "certificate_hash": "08e3b55d5407c390bc796c6ce0b12a0bfbe001c6"
+          }
+        },
+        {
+          "client_id": "1009896022846-ev9n9787da0skp56g99977udvqbcr8mu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-OhZXqlXfUZql2ObkJIKCfY0789LIslk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1009896022846-ev9n9787da0skp56g99977udvqbcr8mu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

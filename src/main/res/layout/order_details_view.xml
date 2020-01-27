@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardBackgroundColor="@color/colorPrimary"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        >
+        <TableLayout
+            android:id="@+id/table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="5dp"
+            android:layoutDirection="rtl">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="اسم الشحنة"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_oname"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:gravity="right"
+                    android:text="تيشيرت"
+                    android:textColor="@color/colorwhite" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="سعر الشحنة"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_oprice"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:text="22.5"
+                    android:gravity="right"
+                    android:textColor="@color/colorwhite" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="رسوم التوصيل"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_ofee"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:text="10"
+                    android:gravity="right"
+                    android:textColor="@color/colorwhite" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="تفاصيل الشحنة"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_odetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="تفاصيل الشحنة"
+                    android:gravity="right"
+                    android:layout_marginStart="5dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/colorwhite"
+                    android:textSize="16sp" />
+            </TableRow>
+
+
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="التاريخ / الوقت "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_otime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:gravity="right"
+                    android:text="22/1/2020 - 20:30"
+                    android:textColor="@color/colorwhite" />
+            </TableRow>
+
+        </TableLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/table"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="الاستلام"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/addressf"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="العنوان من"
+                android:gravity="right"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/colorwhite"
+                android:textSize="16sp" />
+            <ImageView
+                android:id="@+id/img_ofrom"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_add_location"
+                android:textColor="@color/colorwhite" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="التسليم "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/address2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="العنوان من"
+                android:gravity="right"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/colorwhite"
+                />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_rr"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="16sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="تقيم التاجر"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#000" />
+            </androidx.cardview.widget.CardView>
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:numStars="5"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:clickable="true"
+                android:rating="3"
+                android:id="@+id/rate_mandob"
+                android:stepSize="1"
+                />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/rate_btn"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="16sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="تقيم"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#000" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close"
+            android:layout_margin="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/close_dialog"
+            />
+        <LinearLayout
+            android:id="@+id/conbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_alignParentBottom="true"
+            android:layoutDirection="rtl"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"
+            android:layout_gravity="center|bottom"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_confirm"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="16sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="استلام"
+                    android:id="@+id/txt_status"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#000" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/traderCall"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="16sp">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="التواصل مع التاجر"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#000" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/conbtn2"
+            android:layout_above="@id/conbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layoutDirection="rtl"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_order_done"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="16sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="تم الاستلام"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="20sp"
+                    android:textColor="#000" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_confirmsend"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="16sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="تأكيد التسليم "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#000" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mandobcancle"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="16sp">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="إلغاء"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#000" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

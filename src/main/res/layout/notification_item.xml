@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="16sp"
+    android:layout_margin="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="70dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:layoutDirection="rtl"
+        >
+        <TextView
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="الاسم"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:id="@+id/notifi_name"
+            android:layout_height="match_parent" />
+        <TextView
+            android:gravity="start|center"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:text="المحتوى"
+            android:id="@+id/notifi_text"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

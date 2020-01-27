@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false"> Shipo </string>
+    <string name="Addetails" translatable="false" >تفاصيل الشحنة</string>
+    <string name="Done" translatable="false">تنفيذ</string>
+    <string name="available" translatable="false" >متاح</string>
+    <string name="fe" translatable="false">سعر التوصيل</string>
+    <string name="email" translatable="false">رقم الهاتف</string>
+    <string name="fname" translatable="false">الاسم الاول</string>
+    <string name="next">التالى</string>
+    <string name="skip">تخطى</string>
+    <string name="start">ابدأ</string>
+    <string name="search" translatable="false" >بحث</string>
+    <string name="forgetpass" translatable="false">ارجاع كلمة السر</string>
+    <string name="lname" translatable="false">الاسم الثانى</string>
+    <string name="location" translatable="false">العنوان اضغط هنا لتحديد العنوان</string>
+    <string name="login" translatable="false">تسجيل الدخول</string>
+    <string name="menu_home" translatable="false">الرئيسية</string>
+    <string name="adsearch" translatable="false">إعلانات حسب المدينة</string>
+    <string name="wait" translatable="false">الرجاء الانتظار</string>
+    <string name="ors" translatable="false">أو</string>
+    <string name="uploadimage" translatable="false">الصورة الشخصية</string>
+    <string name="trader" translatable="false">تاجر</string>
+    <string name="title" translatable="false">العنوان</string>
+    <string name="rep" translatable="false">مندوب</string>
+    <string name="registbtn" translatable="false">تسجيل جديد</string>
+    <string name="add_ads" translatable="false">أضف إعلان</string>
+    <string name="regist" translatable="false">الاسم الاول</string>
+    <string name="regis" translatable="false">تسجيل جديد</string>
+    <string name="phone" translatable="false">رقم الهاتف</string>
+    <string name="locationt" translatable="false">الموقع (الى )</string>
+    <string name="locationf" translatable="false">الموقع ( من )</string>
+    <string name="pass" translatable="false">كلمة المرور</string>
+    <string name="choosetype" translatable="false">أختر نوع الحساب</string>
+    <string name="orders" translatable="false">توصيلاتى</string>
+    <string name="newaccount" translatable="false">حساب جديد</string>
+    <string name="title_activity_home" translatable="false">الرئيسية</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">اسم المستخدم</string>
+    <string name="settings" translatable="false">الإعدادات</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="menu_gallery" translatable="false">Gallery</string>
+    <string name="menu_slideshow" translatable="false">Slideshow</string>
+    <string name="menu_tools" translatable="false">Tools</string>
+    <string name="menu_share" translatable="false">اللغة</string>
+    <string name="menu_send" translatable="false">Send</string>
+    <string name="profile" translatable="false">الصفحة الشخصية</string>
+    <string name="myorders" translatable="false">طلباتى</string>
+    <string name="mynoti" translatable="false">تنبيهاتى</string>
+    <string name="logout" translatable="false">تسجيل الخروج</string>
+    <string name="about" translatable="false">عن الشركة</string>
+    <string name="contact" translatable="false">تواصل معنا</string>
+    <string name="address" translatable="false">العنوان</string>
+    <string name="day" translatable="false">اليوم</string>
+    <string name="price" translatable="false">السعر</string>
+    <string name="time" translatable="false">وقت التسليم</string>
+    <string name="histroy" translatable="false">تاريخ التسليم</string>
+    <string name="city" translatable="false">البلد</string>
+    <string name="createoredere" translatable="false">طلب مندوب</string>
+</resources>

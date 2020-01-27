@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#6A0C01"
+    tools:context=".ui.Activities.UserType">
+    <LinearLayout
+        android:id="@+id/appname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:layoutDirection="rtl"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txt_EG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EG"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/colorAccent"
+            android:textSize="60sp" />
+
+        <TextView
+            android:id="@+id/txt_shipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shipo"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/colorwhite"
+            android:textSize="60sp" />
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardlin"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@id/centerLin"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:cardBackgroundColor="@color/colorwhite" />
+
+    <LinearLayout
+        android:id="@+id/centerLin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appname"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logo_img"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="top|center"
+            android:src="@drawable/newlogo"
+            android:transitionName="example_transition" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardlin"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:text="تسجيل كـ "
+            android:id="@+id/txt_type"
+            android:gravity="center"
+            android:layout_marginBottom="15dp"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            />
+        <RelativeLayout
+            android:id="@+id/btn_mandob"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/cardlogin"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:layout_centerInParent="true"
+                android:text="@string/rep"
+                android:textColor="#fff" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/btn_trader"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/cardlogin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/trader"
+                android:layout_centerInParent="true"
+                android:textColor="#fff" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
