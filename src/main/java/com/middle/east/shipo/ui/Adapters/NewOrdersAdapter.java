@@ -45,6 +45,7 @@ public class NewOrdersAdapter extends RecyclerView.Adapter<NewOrdersAdapter.MyVi
         holder.price.setText("سعر الشحنة: " + mData.get(position).getPrice()  );
         holder.fee.setText("رسوم الشحن: " + mData.get(position).getFee()  );
         holder.place.setText("مكان التوصيل: " + mData.get(position).getOrdercity2() );
+        holder.placeto.setText("مكان الاستلام: " + mData.get(position).getOrdercityf() );
         /*if(mData.get(position).getOrder_image().equals("Image")){
             Picasso.with(context).load(R.drawable.newlogo).into(holder.oImage);
         }else {
@@ -60,7 +61,7 @@ public class NewOrdersAdapter extends RecyclerView.Adapter<NewOrdersAdapter.MyVi
                 to.putExtra("phone",mData.get(position).getOrderPhone());
                 to.putExtra("details",mData.get(position).getOrderDetails());
                 to.putExtra("oid",mData.get(position).getId());
-                to.putExtra("time",mData.get(position).getHistory()+""+mData.get(position).getTime());
+                to.putExtra("time",mData.get(position).getHistory()+" / "+mData.get(position).getTime());
                 to.putExtra("cityf",mData.get(position).getOrdercityf());
                 to.putExtra("areaf",mData.get(position).getOrderareaf());
                 to.putExtra("addressf",mData.get(position).getOrderaddressf());
@@ -81,11 +82,12 @@ public class NewOrdersAdapter extends RecyclerView.Adapter<NewOrdersAdapter.MyVi
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView name , price , fee , place  ;
+        TextView name , price , fee , place , placeto  ;
         ImageView oImage ;
         CardView oAccept ;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            placeto = itemView.findViewById(R.id.order_placeto);
             name = itemView.findViewById(R.id.order_name);
             fee = itemView.findViewById(R.id.order_fee);
             place = itemView.findViewById(R.id.order_place);

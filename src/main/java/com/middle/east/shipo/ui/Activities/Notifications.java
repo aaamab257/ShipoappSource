@@ -23,22 +23,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
 import com.middle.east.shipo.Helper.ConnectionHelper;
 import com.middle.east.shipo.Helper.CustomDialog;
 import com.middle.east.shipo.Helper.LanguageHelper;
 import com.middle.east.shipo.Helper.SharedHelper;
 import com.middle.east.shipo.Helper.URLHelper;
 import com.middle.east.shipo.R;
-import com.middle.east.shipo.Services.MyFirebaseMessagingService;
-import com.middle.east.shipo.Services.MyOrderNotifications;
-import com.middle.east.shipo.Services.NotificationsDashboard;
-import com.middle.east.shipo.data.TraderHistory;
 import com.middle.east.shipo.ui.Adapters.NotificationsAdapter;
-import com.middle.east.shipo.ui.Adapters.TraderHistoryAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,8 +56,8 @@ public class Notifications extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
         IntViews();
-        Intent intent = new Intent(Notifications.this, NotificationsDashboard.class);
-        startService(intent);
+        /*Intent intent = new Intent(Notifications.this, NotificationsDashboard.class);
+        startService(intent);*/
         getNoti();
         /*handler.postDelayed(new Runnable() {
             public void run() {

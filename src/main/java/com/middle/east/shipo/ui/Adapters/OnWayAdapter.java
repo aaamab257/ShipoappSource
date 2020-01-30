@@ -57,6 +57,7 @@ public class OnWayAdapter extends RecyclerView.Adapter<OnWayAdapter.MyViewHolder
     CustomDialog customDialog;
     final int SPLASH_DISPLAY_LENGTH = 1000;
     Dialog dialog ;
+    String sstatus ;
 
     public OnWayAdapter(Context mCon, ArrayList<OnWayTraderOrdersData> mData) {
         this.mCon = mCon;
@@ -74,13 +75,24 @@ public class OnWayAdapter extends RecyclerView.Adapter<OnWayAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.ordername.setText(mData.get(position).getMandobName());
-        holder.mandobName.setText(mData.get(position).getOrderDetails());
+        holder.mandobName.setText(mData.get(position).getTcity());
+        holder.orderfrom.setText(mData.get(position).getFcity());
+        holder.orderFee.setText(mData.get(position).getFee());
+        holder.orderPrice.setText(mData.get(position).getOrderPrice());
+        sstatus = mData.get(position).getStatus();
+         if(sstatus.equals("3")){
+             holder.tStatus.setVisibility(View.VISIBLE);
+        }
         if (mData.size() != 0 ){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     /**/
                     Intent orders = new Intent(mCon , DelegateAcceptedOrders.class);
+                    orders.putExtra("status",mData.get(position).getStatus());
+                    SharedHelper.putKey(mCon , "status",mData.get(position).getStatus());
+                    orders.putExtra("deleid" , mData.get(position).getDeleid());
+                    SharedHelper.putKey(mCon , "deleID",mData.get(position).getDeleid());
                     orders.putExtra("id",mData.get(position).getOrderID());
                     mCon.startActivity(orders);
                 }
@@ -149,11 +161,15 @@ public class OnWayAdapter extends RecyclerView.Adapter<OnWayAdapter.MyViewHolder
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView ordername  , mandobName;
+        TextView ordername  , mandobName , orderfrom  , orderPrice , orderFee , tStatus;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            tStatus = itemView.findViewById(R.id.txt_status);
             ordername = itemView.findViewById(R.id.txt_ordername);
             mandobName = itemView.findViewById(R.id.txt_orderplace);
+            orderfrom = itemView.findViewById(R.id.txt_orderplacefrom);
+            orderPrice = itemView.findViewById(R.id.txt_orderprice);
+            orderFee = itemView.findViewById(R.id.txt_orderfee);
         }
     }
 }

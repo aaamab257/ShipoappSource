@@ -88,7 +88,8 @@
                     android:textColor="@color/colorwhite" />
             </TableRow>
 
-            <TableRow
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp">
@@ -111,7 +112,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/colorwhite"
                     android:textSize="16sp" />
-            </TableRow>
+            </LinearLayout>
 
 
 
@@ -195,6 +196,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="8dp"
+                android:visibility="gone"
                 android:layout_marginBottom="10dp"
                 app:cardBackgroundColor="@color/colorAccent"
                 app:cardCornerRadius="16sp">
@@ -219,6 +221,7 @@
                 android:id="@+id/rate_mandob"
                 android:stepSize="1"
                 />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/rate_btn"
                 android:layout_width="100dp"
@@ -236,6 +239,44 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="تقيم"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#000" />
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="هذه الشحنة تم الغائها"
+                android:id="@+id/canceling"
+                android:visibility="gone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/colorAccent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="هذه الشحنة تم تسليمها"
+                android:id="@+id/donning"
+                android:visibility="gone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/colorAccent" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_seachfroNew"
+                android:layout_width="150dp"
+                android:visibility="gone"
+                android:layout_height="50dp"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="16sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="ابحث عن شحنة اخرى"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="#000" />
             </androidx.cardview.widget.CardView>
@@ -278,7 +319,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="استلام"
+                    android:text="تم استلام الشحنة"
                     android:id="@+id/txt_status"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="#000" />

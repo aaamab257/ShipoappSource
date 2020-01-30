@@ -39,6 +39,7 @@ import com.middle.east.shipo.Helper.URLHelper;
 import com.middle.east.shipo.R;
 import com.middle.east.shipo.data.MyOrdersData;
 import com.middle.east.shipo.ui.Activities.ContactUs;
+import com.middle.east.shipo.ui.Activities.MandobActivity;
 import com.middle.east.shipo.ui.Activities.MandobOrderDetails;
 import com.squareup.picasso.Picasso;
 
@@ -57,6 +58,18 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.MyView
     Boolean isInternet;
     CustomDialog customDialog;
     final int SPLASH_DISPLAY_LENGTH = 1000;
+    Handler handler;
+    String id;
+    String user_id;
+    CardView rateing;
+    RatingBar mBar;
+    CardView rr;
+    float getrating;
+    TextView text;
+    CardView cancle;
+    CardView done;
+    CardView ssearch;
+    TextView canceling , donning;
 
     public MyOrdersAdapter(Context context, ArrayList<MyOrdersData> mData) {
         this.context = context;
@@ -73,37 +86,32 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.name.setText("اسم الشحنة: " +mData.get(position).getName());
-        holder.price.setText("سعر الشحنة: " +mData.get(position).getPrice());
-        holder.fee.setText("رسوم الشحن: " +mData.get(position).getFee());
-        holder.place.setText("مكان التوصيل: " +mData.get(position).gettCity());
+        holder.name.setText("اسم الشحنة: " + mData.get(position).getName());
+        holder.price.setText("سعر الشحنة: " + mData.get(position).getPrice());
+        holder.fee.setText("رسوم الشحن: " + mData.get(position).getFee());
+        holder.place.setText("مكان التوصيل: " + mData.get(position).gettCity());
         holder.status.setText(mData.get(position).getStatus());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Dialog dialog = new Dialog(context);
                 dialog.setContentView(R.layout.order_details_view);
-                final CardView rr = dialog.findViewById(R.id.btn_rr);
-                final CardView rateing = dialog.findViewById(R.id.rate_btn);
-                final RatingBar mBar = dialog.findViewById(R.id.rate_mandob);
-                rr.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        rr.setVisibility(View.GONE);
-                        mBar.setVisibility(View.VISIBLE);
-                        rateing.setVisibility(View.VISIBLE);
+                rr = dialog.findViewById(R.id.btn_rr);
+                ssearch = dialog.findViewById(R.id.btn_seachfroNew);
+                canceling = dialog.findViewById(R.id.canceling);
+                rateing = dialog.findViewById(R.id.rate_btn);
+                mBar = dialog.findViewById(R.id.rate_mandob);
+                donning = dialog.findViewById(R.id.donning);
+                if (mData.get(position).getId() != null){
+                    id = mData.get(position).getId();
 
-                    }
-                });
-                rateing.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //int noofstars = mBar.getNumStars();
-                        float getrating = mBar.getRating();
-                        String id = mData.get(position).getId();
-                        RateMandob(id , getrating);
-                    }
-                });
+                }
+                if (mData.get(position).getUser_id() != null){
+                    user_id = mData.get(position).getUser_id();
+                }
+
+
+
                 ImageView close = dialog.findViewById(R.id.close_dialog);
                 close.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -111,7 +119,7 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.MyView
                         dialog.dismiss();
                     }
                 });
-                final TextView text = dialog.findViewById(R.id.txt_status);
+                text = dialog.findViewById(R.id.txt_status);
                 TextView name = dialog.findViewById(R.id.txt_oname);
                 TextView price = dialog.findViewById(R.id.txt_oprice);
                 TextView fee = dialog.findViewById(R.id.txt_ofee);
@@ -123,63 +131,33 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.MyView
                 details.setText(mData.get(position).getName());
                 price.setText(mData.get(position).getPrice());
                 fee.setText(mData.get(position).getFee());
-                from.setText(mData.get(position).getFromCity()+","+mData.get(position).getFromArea()+","+mData.get(position).getFromAddress());
-                to.setText(mData.get(position).gettCity()+","+mData.get(position).gettArea()+","+mData.get(position).gettAddress());
-                datetime.setText(mData.get(position).getDate()+","+mData.get(position).getTime());
-                CardView done  = dialog.findViewById(R.id.btn_confirm);
-                final CardView cancle  = dialog.findViewById(R.id.mandobcancle);
-                CardView call  = dialog.findViewById(R.id.traderCall);
-                CardView send  = dialog.findViewById(R.id.btn_confirmsend);
-                Log.e("STATUS",mData.get(position).getStatus());
+                from.setText(mData.get(position).getFromCity() + "," + mData.get(position).getFromArea() + "," + mData.get(position).getFromAddress());
+                to.setText(mData.get(position).gettCity() + "," + mData.get(position).gettArea() + "," + mData.get(position).gettAddress());
+                datetime.setText(mData.get(position).getDate() + "," + mData.get(position).getTime());
+                done = dialog.findViewById(R.id.btn_confirm);
+                cancle = dialog.findViewById(R.id.mandobcancle);
+                CardView call = dialog.findViewById(R.id.traderCall);
+                //CardView send  = dialog.findViewById(R.id.btn_confirmsend);
+                Log.e("STATUS", mData.get(position).getStatus());
                 //text.setText("استلام");
-                if (mData.get(position).getStatus().equals("تم اختيارك")){
-                    done.setOnClickListener(new View.OnClickListener() {
+                if (id != null){
+                    handler = new Handler();
+                    Runnable runnable = new Runnable() {
                         @Override
-                        public void onClick(View v) {
-                            CallReceiveApi(mData.get(position).getId());
-                            text.setText("تسليم");
-                            cancle.setVisibility(View.VISIBLE);
-                        }
-                    });
-                }else if( mData.get(position).getStatus().equals("جارى توصيله")){
-                    text.setText("تسليم");
-                    cancle.setVisibility(View.VISIBLE);
-                    done.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            CallConfirmApi(mData.get(position).getId());
+                        public void run() {
+                            // do your stuff - don't create a new runnable here!
+                            CheckOrderStatus(id);
+                            handler.postDelayed(this, 5000);
 
                         }
-                    });
-                }else if( mData.get(position).getStatus().equals("تم تسليمه")){
-                    text.setText("تم تسليمه");
-                    done.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(context, "هذه الشحنة تم تسليمها", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }else if( mData.get(position).getStatus().equals("ملغى")){
-                    text.setText("ملغى");
-                    done.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(context, "الرجاء الرجوع للتاجر", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    };
+                    handler.post(runnable);
                 }
-                 /*if(mData.get(position).getStatus().equals("جارى توصيله")){
-                    done.setVisibility(View.GONE);
-                }
-                 else if(mData.get(position).getStatus().equals("تم تسليمه")){
-                    send.setVisibility(View.GONE);
-                    cancle.setVisibility(View.GONE);
-                    done.setVisibility(View.GONE);
-                }else if(mData.get(position).getStatus().equals("ملغى")){
-                    send.setVisibility(View.GONE);
-                    cancle.setVisibility(View.GONE);
-                    done.setVisibility(View.GONE);
-                }*/
+
+
+
+
+
 
                 call.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -187,20 +165,13 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.MyView
                         final int REQUEST_PHONE_CALL = 1;
                         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + " +2" + mData.get(position).getPhone()));
                         if (ContextCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                            ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PHONE_CALL);
-                        }
-                        else
-                        {
+                            ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_PHONE_CALL);
+                        } else {
                             context.startActivity(intent);
                         }
                     }
                 });
-                cancle.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        CallCancledApi(mData.get(position).getId());
-                    }
-                });
+
                 close.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -215,24 +186,212 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.MyView
             }
         });
     }
-    public void RateMandob(String id, float getrating) {
+
+    private void CheckOrderStatus(final String id) {
         helper = new ConnectionHelper(context);
         isInternet = helper.isConnectingToInternet();
         customDialog = new CustomDialog(context);
         if (!isInternet) {
             Toast.makeText(context, "لا يوجد اتصال بالإنترنت", Toast.LENGTH_SHORT).show();
         }
-        if(isInternet) {
-            customDialog.setCancelable(false);
-            customDialog.show();
+        if (isInternet) {
+            /*customDialog.setCancelable(false);
+            customDialog.show();*/
             JSONObject object = new JSONObject();
             try {
-                object.put("rate", ""+getrating);
-                object.put("user", id);
+                object.put("offer", id);
+                //object.put("token", SharedHelper.getKey(this , "token"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URLHelper.RATINGS,object, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URLHelper.CHECKORDERSTATUS, object, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    /*if (customDialog.isShowing()) {
+                        customDialog.dismiss();
+                    }*/
+                    String mes = response.optString("status");
+                    if (mes.equals("1")) {
+                        cancle.setVisibility(View.VISIBLE);
+                        cancle.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                CallCancledApi(id);
+                            }
+                        });
+                        done.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                CallReceiveApi(id);
+                                text.setText(" تم تسليم الشحنة");
+                                cancle.setVisibility(View.GONE);
+                            }
+                        });
+                    } else if (mes.equals("2")) {
+                        text.setText(" تم تسليم الشحنة");
+                        done.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                CallConfirmApi(id);
+                                done.setVisibility(View.GONE);
+                            }
+                        });
+                    } else if (mes.equals("3")) {
+                        done.setVisibility(View.GONE);
+                        cancle.setVisibility(View.GONE);
+                        donning.setVisibility(View.VISIBLE);
+                        handler = new Handler();
+                        Runnable runnable3 = new Runnable() {
+                            @Override
+                            public void run() {
+                                // do your stuff - don't create a new runnable here!
+                                checkRating(id, user_id);
+                                handler.postDelayed(this, 1000);
+
+                            }
+                        };
+                        handler.post(runnable3);
+                    } else if (mes.equals("4")) {
+
+                        done.setVisibility(View.GONE);
+                        cancle.setVisibility(View.GONE);
+                        rateing.setVisibility(View.GONE);
+                        mBar.setVisibility(View.GONE);
+                        ssearch.setVisibility(View.VISIBLE);
+                        canceling.setVisibility(View.VISIBLE);
+                        ssearch.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                context.startActivity(new Intent(context , MandobActivity.class));
+                            }
+                        });
+                    }
+
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    /*if (customDialog.isShowing()) customDialog.dismiss();*/
+                    NetworkResponse response = error.networkResponse;
+                    if (response.statusCode == 404) {
+                        //Toast.makeText(MandobOrderDetails.this, "لقد قمت بأختيار الشحنة من قبل", Toast.LENGTH_SHORT).show();
+
+
+                    } else if (response.statusCode == 402) {
+                        Toast.makeText(context, "لا يوجد اتصال بالإنترنت", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+            requestQueue = Volley.newRequestQueue(context);
+            requestQueue.add(jsonObjectRequest);
+        } else {
+            Toast.makeText(context, "الرجاء التأكد من اتصالك بالانترنت", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    helper = new ConnectionHelper(context);
+                    isInternet = helper.isConnectingToInternet();
+                }
+            }, SPLASH_DISPLAY_LENGTH);
+        }
+    }
+
+    private void checkRating(final String id, final String user_id) {
+        helper = new ConnectionHelper(context);
+        isInternet = helper.isConnectingToInternet();
+        customDialog = new CustomDialog(context);
+        if (!isInternet) {
+            Toast.makeText(context, "لا يوجد اتصال بالإنترنت", Toast.LENGTH_SHORT).show();
+        }
+        if (isInternet) {
+            /*customDialog.setCancelable(false);
+            customDialog.show();*/
+            JSONObject object = new JSONObject();
+            try {
+                object.put("user", user_id);
+                object.put("offer_id", id);
+                Log.e("IDS", user_id + id);
+                //object.put("token", SharedHelper.getKey(this , "token"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URLHelper.CHECKRATE, object, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    /*if (customDialog.isShowing()) {
+                        customDialog.dismiss();
+                    }*/
+                    String mes = response.optString("message");
+                    if (mes.equals("0")) {
+                        rr.setVisibility(View.GONE);
+                        mBar.setVisibility(View.VISIBLE);
+                        rateing.setVisibility(View.VISIBLE);
+                        rateing.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                //int noofstars = mBar.getNumStars();
+                                getrating = mBar.getRating();
+                                RateMandob(id, getrating, user_id);
+                                mBar.setVisibility(View.GONE);
+                                rateing.setVisibility(View.GONE);
+                            }
+                        });
+                    } else if (mes.equals("1")) {
+                        rr.setVisibility(View.GONE);
+                    }
+
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    /*if (customDialog.isShowing()) customDialog.dismiss();*/
+                    NetworkResponse response = error.networkResponse;
+                    if (response.statusCode == 404) {
+                        //Toast.makeText(MandobOrderDetails.this, "لقد قمت بأختيار الشحنة من قبل", Toast.LENGTH_SHORT).show();
+
+
+                    } else if (response.statusCode == 402) {
+                        Toast.makeText(context, "لا يوجد اتصال بالإنترنت", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+            requestQueue = Volley.newRequestQueue(context);
+            requestQueue.add(jsonObjectRequest);
+        } else {
+            Toast.makeText(context, "الرجاء التأكد من اتصالك بالانترنت", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    helper = new ConnectionHelper(context);
+                    isInternet = helper.isConnectingToInternet();
+                }
+            }, SPLASH_DISPLAY_LENGTH);
+        }
+    }
+
+    public void RateMandob(String id, float getrating, String user_id) {
+        helper = new ConnectionHelper(context);
+        isInternet = helper.isConnectingToInternet();
+        customDialog = new CustomDialog(context);
+        if (!isInternet) {
+            Toast.makeText(context, "لا يوجد اتصال بالإنترنت", Toast.LENGTH_SHORT).show();
+        }
+        if (isInternet) {
+            /*customDialog.setCancelable(false);
+            customDialog.show();*/
+            JSONObject object = new JSONObject();
+            try {
+                object.put("rate", "" + getrating);
+                object.put("user", user_id);
+                object.put("from_id", SharedHelper.getKey(context, "user_id"));
+                object.put("offer_id", id);
+                Log.e("RATEING", "" + getrating + user_id + SharedHelper.getKey(context, "user_id") + id);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URLHelper.RATINGS, object, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     if (customDialog.isShowing()) {
@@ -254,9 +413,9 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.MyView
             });
             requestQueue = Volley.newRequestQueue(context);
             requestQueue.add(jsonObjectRequest);
-        }else {
+        } else {
             Toast.makeText(context, "الرجاء التأكد من اتصالك بالانترنت", Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(new Runnable(){
+            new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     helper = new ConnectionHelper(context);
@@ -265,6 +424,7 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.MyView
             }, SPLASH_DISPLAY_LENGTH);
         }
     }
+
     private void CallReceiveApi(String id) {
         helper = new ConnectionHelper(context);
         isInternet = helper.isConnectingToInternet();
@@ -449,9 +609,10 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.MyView
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView name , price , fee , place  , status ;
-        ImageView oImage ;
-        CardView oAccept ;
+        TextView name, price, fee, place, status;
+        ImageView oImage;
+        CardView oAccept;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.order_name);

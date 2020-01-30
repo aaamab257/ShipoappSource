@@ -65,7 +65,7 @@ public class HomeActivity extends AppCompatActivity
     RequestQueue requestQueue;
     ConnectionHelper helper;
     Boolean isInternet;
-    int delay = 10000;
+    int delay = 1000;
     TextView nOrders ;
     CustomDialog customDialog;
     final int SPLASH_DISPLAY_LENGTH = 1000;
@@ -76,9 +76,6 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         IntView();
-        getOnWayOffers();
-        //startService(new Intent(this, APINotifications.class));
-        //getMandoben();
         LanguageHelper.ChangeLang(getResources(), "ar");
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.title_activity_home);
@@ -90,23 +87,27 @@ public class HomeActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        handler = new Handler();
-        if(monwayList.size() > size){
-            handler.postDelayed(new Runnable() {
-                public void run() {
 
-                    getOnWayOffers();
-                    handler.postDelayed(this, delay);
-                }
-            }, delay);
-        }
+        handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                // do your stuff - don't create a new runnable here!
+                getOnWayOffers();
+                handler.postDelayed(this, 15000);
+                //Log.e("ORDERS","yes");
+
+            }
+        };
+// start it with:
+        handler.post(runnable);
 
     }
 
     private void getOnWayOffers() {
         if (isInternet) {
 
-            JSONObject object = new JSONObject();
+            final JSONObject object = new JSONObject();
             try {
                 object.put("token", SharedHelper.getKey(this, "token"));
                 object.put("user", SharedHelper.getKey(this, "user_id"));
@@ -119,10 +120,14 @@ public class HomeActivity extends AppCompatActivity
                     if (customDialog.isShowing()) {
                         customDialog.dismiss();
                     }
-                    Log.e("RES", response + "");
-                    monwayList.clear();
+
                     try {
+                        if(monwayList.size() > 0 ){
+                            monwayList.clear();
+                            onWayAdapter.notifyItemRangeRemoved(0 , monwayList.size());
+                        }
                         JSONArray object2 = response.getJSONArray("offers");
+                        Log.e("ONWAYRESPONSE",response+"");
                         for (int i = 0; i < object2.length(); i++) {
                             if(object2.length() == 0){
                                 nOrders.setVisibility(View.VISIBLE);
@@ -134,13 +139,21 @@ public class HomeActivity extends AppCompatActivity
                                 String price = object3.optString("price");
                                 String details = object3.optString("to_address");
                                 String phone = object3.optString("phone");
+                                String deleID = object3.optString("delegate_id");//status
+                                String status = object3.optString("status");
+                                String fCity = object3.getString("fromcity");
+                                String tCity = object3.getString("tocity");
+
+                                String fee = object3.getString("fee");
+
+                                //delegate_id
                                 //first_name
                                 /*String f_name = obj.optString("first_name");
                                 String l_name = obj.optString("last_name");*/
 
                                 //String Rate = obj.optString("rate");
 
-                                monwayList.add(new OnWayTraderOrdersData(id, name, phone,details,price));
+                                monwayList.add(new OnWayTraderOrdersData(id, name, phone,details,price , deleID , status , fCity , tCity  , fee));
                                 onWayAdapter = new OnWayAdapter(HomeActivity.this, monwayList);
                                 LinearLayoutManager mLayoutManager = new LinearLayoutManager(HomeActivity.this);
                                 mLayoutManager.setReverseLayout(true);
@@ -249,6 +262,7 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, CreateOrder.class));
+                finish();
             }
         });
         recPeople = findViewById(R.id.horRecycler);

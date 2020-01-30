@@ -53,21 +53,38 @@ public class MandobOrderDetails extends AppCompatActivity {
     String ophone ;
     Boolean isInternet;
     CustomDialog customDialog;
+    boolean mStopHandler = false;
     int PERMISSION_REQUEST_CODE = 200;
     final int SPLASH_DISPLAY_LENGTH = 1000;
     CardView call;
+    Handler mHandler ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.delegate_details);
         intViews();
-        checkIf();
+
         getFromIntent();
         checkper();
         /*if(SharedHelper.getKey(MandobOrderDetails.this , "Done").equals("IsDaone")){
             doIT.setText("مستعد لأستلام الشحنة");
         }*/
+
+        mHandler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                // do your stuff - don't create a new runnable here!
+                checkIf();
+                if (!mStopHandler) {
+                    mHandler.postDelayed(this, 1000);
+                }
+            }
+        };
+
+// start it with:
+        mHandler.post(runnable);
         TextView odfrom = findViewById(R.id.addressf);
         TextView odto = findViewById(R.id.address2);
         odfrom.setText(cityf + "," + areaf + "," + addressf);
@@ -101,8 +118,8 @@ public class MandobOrderDetails extends AppCompatActivity {
 
     private void checkIf() {
         if(isInternet) {
-            customDialog.setCancelable(false);
-            customDialog.show();
+            /*customDialog.setCancelable(false);
+            customDialog.show();*/
             JSONObject object = new JSONObject();
             try {
                 object.put("delegate", SharedHelper.getKey(this , "user_id"));
@@ -114,22 +131,24 @@ public class MandobOrderDetails extends AppCompatActivity {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URLHelper.CHECK, object, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    if (customDialog.isShowing()) {
+                    /*if (customDialog.isShowing()) {
                         customDialog.dismiss();
-                    }
+                    }*/
                     String mes = response.optString("message");
                     if(mes.equals("0")){
-                        oDoit.setEnabled(false);
-                        doIT.setText("لقد قمت بأختيار الشحنة من قبل");
-                    }else if(mes.equals("1")){
                         oDoit.setEnabled(true);
                         doIT.setText("مستعد لأستلام الشحنة");
                         oDoit.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 ChangeStatusOnWay(id);
+                                oDoit.setVisibility(View.GONE);
                             }
                         });
+                    }else if(mes.equals("1")){
+                        oDoit.setEnabled(false);
+                        doIT.setText("لقد قمت بأختيار الشحنة");
+
                     }
 
 
@@ -137,7 +156,7 @@ public class MandobOrderDetails extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    if (customDialog.isShowing()) customDialog.dismiss();
+                    /*if (customDialog.isShowing()) customDialog.dismiss();*/
                     NetworkResponse response = error.networkResponse;
                     if (response.statusCode == 404) {
                         //Toast.makeText(MandobOrderDetails.this, "لقد قمت بأختيار الشحنة من قبل", Toast.LENGTH_SHORT).show();

@@ -1,6 +1,5 @@
 package com.middle.east.shipo.ui.Activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,6 +16,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -31,8 +31,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.middle.east.shipo.Helper.LanguageHelper;
 import com.middle.east.shipo.Helper.SharedHelper;
 import com.middle.east.shipo.R;
-import com.middle.east.shipo.Services.MyOrderNotifications;
-import com.middle.east.shipo.Services.NewOrderAdded;
 import com.middle.east.shipo.app.Config;
 import com.middle.east.shipo.ui.Fragments.MyOrders;
 import com.middle.east.shipo.ui.Fragments.NewOrder;
@@ -47,6 +45,7 @@ public class MandobActivity extends AppCompatActivity implements NavigationView.
     ImageView noti , logOut , refresh  ;
     String  who = "" ;
     ImageView nave ;
+    Handler handler;
     private static final String TAG = MandobActivity.class.getSimpleName();
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     @Override
@@ -54,6 +53,7 @@ public class MandobActivity extends AppCompatActivity implements NavigationView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mandob);
         IntiView();
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.title_activity_home);
         setSupportActionBar(toolbar);
@@ -92,8 +92,8 @@ public class MandobActivity extends AppCompatActivity implements NavigationView.
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MandobActivity.this , MandobActivity.class));
                 finish();
+                startActivity(getIntent());
             }
         });
         /*noti.setOnClickListener(new View.OnClickListener() {
@@ -179,8 +179,8 @@ public class MandobActivity extends AppCompatActivity implements NavigationView.
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new MyOrders(), "طلباتى");
-        adapter.addFragment(new NewOrder(), "طلبات جديدة");
+        adapter.addFragment(new NewOrder(), "شحنات جديدة");
+        adapter.addFragment(new MyOrders(), "شحناتى");
         viewPager.setAdapter(adapter);
     }
 
@@ -206,9 +206,11 @@ public class MandobActivity extends AppCompatActivity implements NavigationView.
 
         } else if (id == R.id.nav_logout) {
             SharedHelper.putKey(MandobActivity.this ,"isLoged","");
-            SharedHelper.putKey(MandobActivity.this ,"isType","");
-            startActivity(new Intent(MandobActivity.this, NavActivity.class));
-            finish();
+            /*SharedHelper.putKey(MandobActivity.this ,"isType","");
+            SharedHelper.putKey(MandobActivity.this ,"token","");*/
+            //SharedHelper.clearSharedPreferences(MandobActivity.this);
+            startActivity(new Intent(MandobActivity.this, LoginScreen.class));
+            MandobActivity.this.finish();
         } else if (id == R.id.nav_mynoti) {
             startActivity(new Intent(MandobActivity.this, Notifications.class));
         }

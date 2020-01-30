@@ -47,19 +47,27 @@ public class DelegateAcceptedOrders extends AppCompatActivity {
     Boolean isInternet;
     int delay = 10000;
     TextView nOrders ;
+    String offerID ;
     CustomDialog customDialog;
     final int SPLASH_DISPLAY_LENGTH = 1000;
+    String deleID ;
+    String status ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delegate_accepted_orders);
         intViews();
+        //checkif();
         Intent getID = getIntent();
-        String offerID = getID.getStringExtra("id");
+        offerID = getID.getStringExtra("id");
+        deleID = getID.getStringExtra("deleid");
+        status = getID.getStringExtra("status");
         Log.e("helloid",offerID);
         CallDelegateAPI(offerID);
 
     }
+
+
 
     private void CallDelegateAPI(String offerID) {
         if(isInternet) {

@@ -81,9 +81,15 @@ public class EnterPhone extends AppCompatActivity {
         sendCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goToRegis = new Intent(EnterPhone.this,RegisterActivity.class);
-                goToRegis.putExtra("Phone",phoneNum.getText().toString());
-                startActivity(goToRegis);
+                String pphone = phoneNum.getText().toString();
+                if(pphone.isEmpty()){
+                    phoneNum.setError("أدخل رقم الهاتف");
+                }else {
+                    Intent goToRegis = new Intent(EnterPhone.this,RegisterActivity.class);
+                    goToRegis.putExtra("Phone",pphone);
+                    startActivity(goToRegis);
+                }
+
             }
         });
         verifyCodeButton.setOnClickListener(new View.OnClickListener() {

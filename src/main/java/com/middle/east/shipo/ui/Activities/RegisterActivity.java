@@ -207,7 +207,7 @@ public class RegisterActivity extends AppCompatActivity {
                             CityName.add(city);
                             CityId.add(id);
                         }
-                        AreaSp.setAdapter(new ArrayAdapter<>(RegisterActivity.this, android.R.layout.simple_list_item_1, CityName));
+                        AreaSp.setAdapter(new ArrayAdapter<>(RegisterActivity.this, R.layout.spinner_item, CityName));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -256,7 +256,7 @@ public class RegisterActivity extends AppCompatActivity {
                             CountryName.add(city);
                             CountryId.add(id);
                         }
-                    CitySp.setAdapter(new ArrayAdapter<>(RegisterActivity.this, android.R.layout.simple_spinner_dropdown_item, CountryName));
+                    CitySp.setAdapter(new ArrayAdapter<>(RegisterActivity.this, R.layout.spinner_item, CountryName));
 
                 }catch (JSONException e){e.printStackTrace();}
             }

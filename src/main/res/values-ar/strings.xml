@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name" translatable="false"> Shipo </string>
     <string name="Addetails" translatable="false" >تفاصيل الشحنة</string>
-    <string name="Done" translatable="false">تنفيذ</string>
+    <string name="Done" translatable="false">إرسال</string>
     <string name="available" translatable="false" >متاح</string>
     <string name="fe" translatable="false">سعر التوصيل</string>
     <string name="email" translatable="false">رقم الهاتف</string>
@@ -50,7 +50,7 @@
     <string name="myorders" translatable="false">طلباتى</string>
     <string name="mynoti" translatable="false">تنبيهاتى</string>
     <string name="logout" translatable="false">تسجيل الخروج</string>
-    <string name="about" translatable="false">عن الشركة</string>
+    <string name="about" translatable="false">الشروط والأحكام</string>
     <string name="contact" translatable="false">تواصل معنا</string>
     <string name="address" translatable="false">العنوان</string>
     <string name="day" translatable="false">اليوم</string>

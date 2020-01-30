@@ -28,6 +28,10 @@ public class URLHelper {
     public static String CONFIRMORDER = base+"changeOrderStatus";
     public static String RATINGS = base+"rate";
     public static String CHECK = base+"checkDelegateOffer";
-    public static String FILTER = base+"filterTraders";//filterTraders
+    public static String CHECKTRADERS = base+"checkTrader";
+    public static String FILTER = base+"filterTraders";
+    public static String CANCEL = base+"cancelDelegate";
+    public static String CHECKRATE = base+"checkrate";//checkOrder
+    public static String CHECKORDERSTATUS = base+"checkOrder";//checkOrder
     //rate
 }

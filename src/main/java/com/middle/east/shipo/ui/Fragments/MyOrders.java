@@ -26,9 +26,7 @@ import com.middle.east.shipo.Helper.CustomDialog;
 import com.middle.east.shipo.Helper.SharedHelper;
 import com.middle.east.shipo.Helper.URLHelper;
 import com.middle.east.shipo.R;
-import com.middle.east.shipo.Services.MyOrderNotifications;
 import com.middle.east.shipo.data.MyOrdersData;
-import com.middle.east.shipo.ui.Activities.MandobActivity;
 import com.middle.east.shipo.ui.Adapters.MyOrdersAdapter;
 
 import org.json.JSONArray;
@@ -51,7 +49,8 @@ public class MyOrders extends Fragment {
     MyOrdersAdapter myOrdersAdapter ;
     ArrayList<MyOrdersData> mList ;
     Handler handler;
-    int delay = 10000;
+    String token ;
+    //int delay = 10000;
     public MyOrders() {
         // Required empty public constructor
     }
@@ -63,18 +62,25 @@ public class MyOrders extends Fragment {
 
         v = inflater.inflate(R.layout.fragment_my_orders, container, false);
         IntiViews();
-        Intent intent = new Intent(getContext(), MyOrderNotifications.class);
-        getActivity().startService(intent);
-        getOrders();
-        handler.postDelayed(new Runnable() {
+        if(getActivity() != null){
+            token = SharedHelper.getKey(getActivity(),"token");
+        }
+
+        handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
             public void run() {
+                // do your stuff - don't create a new runnable here!
+                getOrders();
+                handler.postDelayed(this, 15000);
+
+            }
+        };
+// start it with:
+        handler.post(runnable);
+
 
                 //getOrders();
-                handler.postDelayed(this, delay);
-            }
-        }, delay);
-
-
         return v ;
     }
 
@@ -86,8 +92,11 @@ public class MyOrders extends Fragment {
             }
             JSONObject object = new JSONObject();
             try {
-                object.put("token", SharedHelper.getKey(getContext(),"token"));
-                object.put("user", SharedHelper.getKey(getContext(),"user_id"));
+                if(getActivity() != null){
+                    object.put("token", token);
+                    object.put("user", SharedHelper.getKey(getActivity(),"user_id"));
+                }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -97,9 +106,6 @@ public class MyOrders extends Fragment {
 
                     try {
                         JSONArray array = response.getJSONArray("offers");
-                        SharedHelper.putKey(getContext(),"length",""+array.length());
-                        /*Intent intent = new Intent(getContext(), MyOrderNotifications.class);
-                        getActivity().startService(intent);*/
                         for (int i = 0 ; i < array.length() ; i ++ ){
                             JSONObject object1 = array.getJSONObject(i);
                             String status = object1.optString("status");
@@ -223,8 +229,11 @@ public class MyOrders extends Fragment {
                     }
                 }
             });
-            requestQueue = Volley.newRequestQueue(getContext());
-            requestQueue.add(jsonObjectRequest);
+            if(getActivity() != null){
+                requestQueue = Volley.newRequestQueue(getActivity());
+                requestQueue.add(jsonObjectRequest);
+            }
+
         }else {
             Toast.makeText(getContext(), "الرجاء التأكد من اتصالك بالانترنت", Toast.LENGTH_SHORT).show();
             new Handler().postDelayed(new Runnable(){

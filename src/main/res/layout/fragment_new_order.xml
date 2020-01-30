@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/bg_red"
     tools:context=".ui.Fragments.NewOrder">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -26,178 +26,247 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorAccent"
-                    android:text="اختر مكان الاستلام والتسليم والتقيم"
+                    android:text="البحث"
+                    android:gravity="center"
                     android:layout_marginEnd="10dp"
                     android:layout_below="@id/container"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="3dp"
                     />
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorAccent"
-                    android:text="من"
-                    android:layout_gravity="end|center"
-                    android:gravity="center"
-                    />
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/cardlogin">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:layoutDirection="rtl"
+                    android:weightSum="2"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
+                        android:text="من"
+                        android:layout_weight="1"
+                        android:layout_gravity="end|center"
                         android:gravity="center"
-                        android:layoutDirection="rtl"
-                        android:weightSum="4"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_weight="2"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorAccent"
-                            android:text="اختر المحافظة"
-                            android:layout_gravity="end|center"
-                            android:gravity="center"
-                            />
-                        <Spinner
-                            android:layout_weight="2"
-                            android:backgroundTint="@color/colorAccent"
-                            android:id="@+id/sp_fromprov"
-                            android:textAlignment="center"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"/>
-                    </LinearLayout>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/cardlogin">
+                        />
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:id="@+id/ch_from"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorAccent"
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:gravity="center"
-                        android:layoutDirection="rtl"
-                        android:weightSum="4"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_weight="2"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorAccent"
-                            android:text="اختر المنطقة"
-                            android:layout_gravity="end|center"
-                            android:gravity="center"
-                            />
-                        <Spinner
-                            android:layout_weight="2"
-                            android:backgroundTint="@color/colorAccent"
-                            android:id="@+id/sp_fromcity"
-                            android:textAlignment="center"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"/>
-                    </LinearLayout>
-                </RelativeLayout>
-                <TextView
+                        />
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorAccent"
-                    android:text="الى"
-                    android:layout_gravity="end|center"
-                    android:gravity="center"
-                    />
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/cardlogin">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layoutDirection="rtl"
+                    android:layout_weight="2"
+                    android:background="@drawable/cardlogin"
+                    >
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:layoutDirection="rtl"
-                        android:weightSum="4"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_weight="2"
-                            android:layout_width="0dp"
+                        android:layout_weight="1"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorAccent"
-                            android:text="اختر المحافظة"
-                            android:layout_gravity="end|center"
                             android:gravity="center"
-                            />
-                        <Spinner
-                            android:layout_weight="2"
-                            android:backgroundTint="@color/colorAccent"
-                            android:id="@+id/sp_toprov"
-                            android:textAlignment="center"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"/>
-                    </LinearLayout>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/cardlogin">
+                            android:layoutDirection="rtl"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/colorAccent"
+                                android:text="المحافظة"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
 
-                    <LinearLayout
+                                />
+                            <Spinner
+                                android:backgroundTint="@color/colorAccent"
+                                android:id="@+id/sp_fromprov"
+                                android:gravity="start"
+                                android:layout_marginBottom="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:layoutDirection="rtl"
-                        android:weightSum="4"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_weight="2"
-                            android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorAccent"
-                            android:text="اختر المنطقة"
-                            android:layout_gravity="end|center"
                             android:gravity="center"
-                            />
-                        <Spinner
-                            android:layout_weight="2"
-                            android:backgroundTint="@color/colorAccent"
-                            android:id="@+id/sp_tocity"
-                            android:textAlignment="center"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"/>
-                    </LinearLayout>
-                </RelativeLayout>
+                            android:layoutDirection="rtl"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="start|center"
+                                android:textColor="@color/colorAccent"
+                                android:text="المنطقة"
+
+                                />
+                            <Spinner
+                                android:backgroundTint="@color/colorAccent"
+                                android:id="@+id/sp_fromcity"
+                                android:gravity="start"
+                                android:layout_marginBottom="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layoutDirection="rtl"
+                    android:weightSum="2"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
+                        android:text="الى"
+                        android:layout_weight="1"
+                        android:layout_gravity="end|center"
+                        android:gravity="center"
+                        />
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:id="@+id/ch_to"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorAccent"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layoutDirection="rtl"
+                    android:layout_weight="2"
+                    android:background="@drawable/cardlogin"
+                    >
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layoutDirection="rtl"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/colorAccent"
+                                android:text="المحافظة"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+
+                                />
+                            <Spinner
+                                android:backgroundTint="@color/colorAccent"
+                                android:id="@+id/sp_toprov"
+                                android:gravity="start"
+                                android:layout_marginBottom="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layoutDirection="rtl"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="start|center"
+                                android:textColor="@color/colorAccent"
+                                android:text="المنطقة"
+
+                                />
+                            <Spinner
+                                android:backgroundTint="@color/colorAccent"
+                                android:id="@+id/sp_tocity"
+                                android:gravity="start"
+                                android:layout_marginBottom="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layoutDirection="rtl"
+                    android:weightSum="2"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
+                        android:text="التقيم"
+                        android:layout_weight="1"
+                        android:layout_gravity="end|center"
+                        android:gravity="center"
+                        />
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:id="@+id/ch_rate"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorAccent"
+
+                        />
+                </LinearLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/cardlogin">
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:layoutDirection="rtl"
-                        android:weightSum="4"
+                        android:weightSum="3"
+                        android:background="@drawable/cardlogin"
                         android:orientation="horizontal">
                         <TextView
-                            android:layout_weight="2"
+                            android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorAccent"
@@ -206,12 +275,14 @@
                             android:gravity="center"
                             />
                         <Spinner
-                            android:layout_weight="2"
+                            android:layout_weight="1"
                             android:backgroundTint="@color/colorAccent"
                             android:id="@+id/sp_rate"
-                            android:textAlignment="center"
-                            android:layout_width="0dp"
+                            android:gravity="start"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"/>
+
                     </LinearLayout>
                 </RelativeLayout>
                 <androidx.cardview.widget.CardView
@@ -234,31 +305,17 @@
                         android:textColor="@color/colorPrimary" />
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
-            <TextView
-                android:textColor="@color/colorAccent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="الكل"
-                android:layout_marginEnd="20dp"
-                android:layout_below="@id/container"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:id="@+id/txt_all"
-                />
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_below="@id/txt_all"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:id="@+id/rec_newOrders"
-                />
+
+
             <TextView
                 android:textColor="@color/colorAccent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="نتائج البحث"
                 android:layout_marginEnd="20dp"
+                android:gravity="center"
                 android:visibility="gone"
+                android:id="@+id/search_result"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 />
@@ -269,6 +326,36 @@
                 android:layout_marginTop="5dp"
                 android:visibility="gone"
                 android:id="@+id/rec_search"
+                />
+            <TextView
+                android:textColor="@color/colorAccent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="الكل"
+                android:visibility="gone"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/txt_old"
+                />
+            <TextView
+                android:textColor="@color/colorAccent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="الكل"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/txt_all"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_below="@id/txt_all"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:id="@+id/rec_newOrders"
                 />
             <TextView
                 android:id="@+id/text_noOrder"

@@ -164,6 +164,7 @@ public class CreateOrder extends AppCompatActivity {
                                 ohistory.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
                             }
                         }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
             }
         });
@@ -195,7 +196,7 @@ public class CreateOrder extends AppCompatActivity {
                         CountryName2.add(city);
                         CountryId2.add(id);
                     }
-                    CitySp2.setAdapter(new ArrayAdapter<>(CreateOrder.this, android.R.layout.simple_spinner_dropdown_item, CountryName2));
+                    CitySp2.setAdapter(new ArrayAdapter<>(CreateOrder.this, R.layout.spinner_item, CountryName2));
 
                 }catch (JSONException e){e.printStackTrace();}
             }
@@ -261,8 +262,8 @@ public class CreateOrder extends AppCompatActivity {
                             customDialog.dismiss();
                         }
                         Toast.makeText(CreateOrder.this, "تم تسجيل الشحنة بنجاح", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(CreateOrder.this , HomeActivity.class));
                         finish();
-                        startActivity(getIntent());
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -314,7 +315,7 @@ public class CreateOrder extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+               startActivity(new Intent(CreateOrder.this , HomeActivity.class));
             }
         });
         oname = findViewById(R.id.order_name);
@@ -351,7 +352,7 @@ public class CreateOrder extends AppCompatActivity {
                             CityName2.add(city);
                             CityId2.add(id);
                         }
-                        AreaSp2.setAdapter(new ArrayAdapter<>(CreateOrder.this, android.R.layout.simple_spinner_dropdown_item, CityName2));
+                        AreaSp2.setAdapter(new ArrayAdapter<>(CreateOrder.this, R.layout.spinner_item, CityName2));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -405,7 +406,7 @@ public class CreateOrder extends AppCompatActivity {
                             CityName.add(city);
                             CityId.add(id);
                         }
-                        AreaSp.setAdapter(new ArrayAdapter<>(CreateOrder.this, android.R.layout.simple_spinner_dropdown_item, CityName));
+                        AreaSp.setAdapter(new ArrayAdapter<>(CreateOrder.this, R.layout.spinner_item, CityName));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -454,7 +455,7 @@ public class CreateOrder extends AppCompatActivity {
                         CountryName.add(city);
                         CountryId.add(id);
                     }
-                    CitySp.setAdapter(new ArrayAdapter<>(CreateOrder.this, android.R.layout.simple_spinner_dropdown_item, CountryName));
+                    CitySp.setAdapter(new ArrayAdapter<>(CreateOrder.this, R.layout.spinner_item, CountryName));
 
                 }catch (JSONException e){e.printStackTrace();}
             }
